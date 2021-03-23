@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OmdbapiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('omdb', [OmdbapiController::class, 'index'])->name('omdb.index');
+Route::post('omdb', [OmdbapiController::class, 'store'])->name('omdb.store');
+Route::get('omdb/{search}/{page}', [OmdbapiController::class, 'search'])->name('omdb.search');
