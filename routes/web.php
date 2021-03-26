@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AnagramController;
 use App\Http\Controllers\OmdbapiController;
 
 /*
@@ -18,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// omdb
 Route::get('omdb', [OmdbapiController::class, 'index'])->name('omdb.index');
 Route::post('omdb', [OmdbapiController::class, 'store'])->name('omdb.store');
 Route::get('omdb/{search}/{page}', [OmdbapiController::class, 'search'])->name('omdb.search');
+// end omdb
+
+// anagram
+Route::get('anagram', [AnagramController::class, 'index'])->name('anagram.index');
+// end anagram
